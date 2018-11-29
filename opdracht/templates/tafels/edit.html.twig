@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit Tafels{% endblock %}
+
+{% block body %}
+    <h1>Edit Tafels</h1>
+
+    {{ include('tafels/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('tafels_index') }}">back to list</a>
+
+    {{ include('tafels/_delete_form.html.twig') }}
+{% endblock %}

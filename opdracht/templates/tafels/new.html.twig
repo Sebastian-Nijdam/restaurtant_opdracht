@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Tafels{% endblock %}
+
+{% block body %}
+    <h1>Create new Tafels</h1>
+
+    {{ include('tafels/_form.html.twig') }}
+
+    <a href="{{ path('tafels_index') }}">back to list</a>
+{% endblock %}

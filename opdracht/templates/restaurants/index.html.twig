@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurants index{% endblock %}
+
+{% block body %}
+    <h1>Restaurants index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Naam</th>
+                <th>TelefoonNummer</th>
+                <th>Plaats</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for restaurant in restaurants %}
+            <tr>
+                <td>{{ restaurant.id }}</td>
+                <td>{{ restaurant.Naam }}</td>
+                <td>{{ restaurant.TelefoonNummer }}</td>
+                <td>{{ restaurant.Plaats }}</td>
+                <td>
+                    <a href="{{ path('restaurants_show', {'id': restaurant.id}) }}">show</a>
+                    <a href="{{ path('restaurants_edit', {'id': restaurant.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('restaurants_new') }}">Create new</a>
+{% endblock %}

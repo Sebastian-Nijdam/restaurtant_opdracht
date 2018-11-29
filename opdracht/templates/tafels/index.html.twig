@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tafels index{% endblock %}
+
+{% block body %}
+    <h1>Tafels index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Zitplaatsen</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tafel in tafels %}
+            <tr>
+                <td>{{ tafel.id }}</td>
+                <td>{{ tafel.Zitplaatsen }}</td>
+                <td>
+                    <a href="{{ path('tafels_show', {'id': tafel.id}) }}">show</a>
+                    <a href="{{ path('tafels_edit', {'id': tafel.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('tafels_new') }}">Create new</a>
+{% endblock %}

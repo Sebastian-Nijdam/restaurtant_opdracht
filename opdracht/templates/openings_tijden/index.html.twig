@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OpeningsTijden index{% endblock %}
+
+{% block body %}
+    <h1>OpeningsTijden index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Dag</th>
+                <th>OpenTijd</th>
+                <th>DichtTijd</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for openings_tijden in openings_tijdens %}
+            <tr>
+                <td>{{ openings_tijden.id }}</td>
+                <td>{{ openings_tijden.Dag }}</td>
+                <td>{{ openings_tijden.OpenTijd ? openings_tijden.OpenTijd|date('H:i:s') : '' }}</td>
+                <td>{{ openings_tijden.DichtTijd ? openings_tijden.DichtTijd|date('H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('openings_tijden_show', {'id': openings_tijden.id}) }}">show</a>
+                    <a href="{{ path('openings_tijden_edit', {'id': openings_tijden.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('openings_tijden_new') }}">Create new</a>
+{% endblock %}

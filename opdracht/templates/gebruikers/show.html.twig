@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gebruikers{% endblock %}
+
+{% block body %}
+    <h1>Gebruikers</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ gebruiker.id }}</td>
+            </tr>
+            <tr>
+                <th>Naam</th>
+                <td>{{ gebruiker.Naam }}</td>
+            </tr>
+            <tr>
+                <th>Wachtwoord</th>
+                <td>{{ gebruiker.Wachtwoord }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('gebruikers_index') }}">back to list</a>
+
+    <a href="{{ path('gebruikers_edit', {'id': gebruiker.id}) }}">edit</a>
+
+    {{ include('gebruikers/_delete_form.html.twig') }}
+{% endblock %}

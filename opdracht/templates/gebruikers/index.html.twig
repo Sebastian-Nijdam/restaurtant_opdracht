@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gebruikers index{% endblock %}
+
+{% block body %}
+    <h1>Gebruikers index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Naam</th>
+                <th>Wachtwoord</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for gebruiker in gebruikers %}
+            <tr>
+                <td>{{ gebruiker.id }}</td>
+                <td>{{ gebruiker.Naam }}</td>
+                <td>{{ gebruiker.Wachtwoord }}</td>
+                <td>
+                    <a href="{{ path('gebruikers_show', {'id': gebruiker.id}) }}">show</a>
+                    <a href="{{ path('gebruikers_edit', {'id': gebruiker.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('gebruikers_new') }}">Create new</a>
+{% endblock %}
